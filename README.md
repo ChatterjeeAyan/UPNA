@@ -1,4 +1,4 @@
-# configuration-model-dgl
+# Emergence of Topological Shortcuts in Machine Learning on Graphs
 
 The performances of GNN and network configuration model is compared across various network datasets.
 
