@@ -1,4 +1,4 @@
-# Emergence of Topological Shortcuts in Machine Learning on Graphs
+# Emergence of Topological Shortcuts in Graph Machine Learning
 
 The performances of GNN and network configuration model is compared across various network datasets.
 
