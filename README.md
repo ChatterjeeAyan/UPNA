@@ -22,7 +22,7 @@ Transductive link prediction on ogbl-ddi: /shortcuts-graph-machine-learning/Topo
 
 ogbl-ddi: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_ddi_node_split.py
 
-ogbl:ppa: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_node_split_collab.py
+ogbl-ppa: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_node_split_collab.py
 
 ogbl-collab: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_node_split_ppa.py
 
