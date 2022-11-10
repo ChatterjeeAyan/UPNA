@@ -10,6 +10,8 @@ Link prediction is a core task in graph machine learning, as it is useful in man
 
 We use the OGB benchmark to develop and run the experiments. Please refer to the OGB documentation and setup for executing the experiments listed below: https://github.com/snap-stanford/ogb
 
+Merge the files from /shortcuts-graph-machine-learning/Inductive-tests/ogb/ in the extracted ogb folder. 
+
 For setting up the state-of-the-art link prediction model PLNLP, please refer to: https://github.com/zhitao-wang/plnlp
 
 ## Topological Shortcuts in Transductive Tests
