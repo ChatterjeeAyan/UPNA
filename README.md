@@ -1,46 +1,53 @@
-# Improving Inductive Link Prediction through Learning Generalizable Node Representations
+# Disentangling Node Attributes from Graph Topology for Improved Generalizability in Link Prediction
 
 # Abstract 
 
-Link prediction is a core task in graph machine learning, as it is useful in many application domains from social networks to biological networks. Link prediction can be performed under different experimental settings: (1) transductive, (2) semi-inductive, and (3) inductive. The most common setting is the transductive one, where the task is to predict whether two observed nodes have a link. In the semi-inductive setting, the task is to predict whether an observed node has a link to a newly observed node, which was unseen during training. For example, cold start in recommendation systems requires suggesting a known product to a new user. We study the inductive setting, where the task is to predict whether two newly observed nodes have a link. The inductive setting occurs in many real-world applications such as predicting interactions between two poorly investigated chemical structures or identifying collaboration possibilities between two new authors. In this paper, we demonstrate that current state-of-the-are techniques perform poorly under the inductive setting, i.e., when generalizing to new nodes, due to the overlapping information between the graph topology and the node attributes. To address this issue and improve the robustness of link prediction models in an inductive setting, we propose new methods for designing inductive tests on any graph dataset, accompanied by unsupervised pre-training of the node attributes. Our experiments show that the inductive test performances of the state-of-the-art link prediction models are substantially lower compared to the transductive scenario. These performances are comparable, and often lower than that of a simple multilayer perceptron on the node attributes. Unsupervised pre-training of the node attributes improves the inductive performance, hence the generalizability of the link prediction models.
+Link prediction is a core task in graph machine learning, as it is useful in many application domains ranging from friendship recommendations in social networks to the discovery of new drugs in drug-target interaction networks. The most common setting in link prediction is the transductive scenario, where both the nodes of the test link are observed in training. When one or both of the test nodes are not seen during training, the link prediction settings are termed semi-inductive and inductive link prediction, respectively. For these unobserved isolated nodes, the absence of topological information enforces the link prediction models to leverage the node attributes for making accurate predictions. For example, recommending a new item to a user in the semi-inductive setting, or identifying the interaction between a novel protein target and a newly developed drug in the inductive setting demands meaningful pairwise learning on the node attributes. Furthermore, the semi-inductive and inductive link prediction scenarios are of interest in temporal networks where newly arrived nodes attach to temporal instances of the graph, creating a topology evolving in time.
 
-# Experiments and Related Files
+In this work, we explore the interplay between the node attributes and the graph topology, and demonstrate how node attributes orthogonal to the graph topology from an informational standpoint improve the generalization power of the link prediction models quantified in terms of the inductive link prediction performance. Unsupervised pre-training of the node attributes independent of the topology and on large corpora enables us to learn the latent graph generation mechanism independent of the observed graph. By gaining insight into the growth mechanism of the graph via the node attributes, we discard the observational bias associated with a fixed snapshot of the network and are able to make meaningful predictions on unobserved nodes circumventing topological shortcuts. Unsupervised pre-training of the attributes can be extended to any pairwise learning task such as the cold-start problem in recommender systems and pairwise kernels. 
+
+# Reproducing the Results 
 
 ## Requirements
 
 We use the OGB benchmark to develop and run the experiments. Please refer to the OGB documentation and setup for executing the experiments listed below: https://github.com/snap-stanford/ogb
 
-Merge the files from /shortcuts-graph-machine-learning/Inductive-tests/ogb/ in the extracted ogb folder. 
+Merge the files from /Inductive-tests/ogb/ in the extracted ogb folder. 
 
 For setting up the state-of-the-art link prediction model PLNLP, please refer to: https://github.com/zhitao-wang/plnlp
 
 ## Topological Shortcuts in Transductive Tests
 
-Configuration models - traditional and duplex: /shortcuts-graph-machine-learning/Topological-Shortcuts/maximumentropymodels.py
+Configuration models - traditional and duplex: /Topological-Shortcuts/maximumentropymodels.py
 
-Transductive link prediction on ogbl-ddi: /shortcuts-graph-machine-learning/Topological-Shortcuts/ogbl-ddi-configuration-model.ipynb
+Transductive link prediction on ogbl-ddi: /Topological-Shortcuts/ogbl-ddi-configuration-model.ipynb
 
 ## Inductive Tests on State-of-the-art PLNLP with random node split
 
-ogbl-ddi: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_ddi_node_split.py
+ogbl-ddi: /Inductive-tests/PLNLP/main_ddi_node_split.py
 
-ogbl-ppa: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_node_split_collab.py
+ogbl-ppa: /Inductive-tests/PLNLP/main_node_split_collab.py
 
-ogbl-collab: /shortcuts-graph-machine-learning/Inductive-tests/PLNLP/main_node_split_ppa.py
-
+ogbl-collab: /Inductive-tests/PLNLP/main_node_split_ppa.py
 
 ## Pre-training of Node Attributes and Davis-Bouldin Score Analysis
 
-ogbl-ddi: /shortcuts-graph-machine-learning/Node-Attributes-Analysis/ogbl-ddi-pretraining-data-analysis/mapping/
+ogbl-ddi: /Node-Attributes-Analysis/ogbl-ddi-pretraining-data-analysis/mapping/
 
-ogbl-ppa: /shortcuts-graph-machine-learning/Node-Attributes-Analysis/ogb-ppi-pretraining-data-analysis/
+ogbl-ppa: /Node-Attributes-Analysis/ogb-ppi-pretraining-data-analysis/
 
-ogbl-collab: /shortcuts-graph-machine-learning/Node-Attributes-Analysis/ogbl-collab-pretraining-data-analysis/mapping/
+ogbl-collab: /Node-Attributes-Analysis/ogbl-collab-pretraining-data-analysis/mapping/
 
 ## Inductive tests using MLPs and pre-trained node attributes 
 
-ogbl-ddi: /shortcuts-graph-machine-learning/Inductive-tests/ogb/examples/linkproppred/ddi/
+ogbl-ddi: /Inductive-tests/ogb/examples/linkproppred/ddi/
 
-ogbl-ppa: /shortcuts-graph-machine-learning/Inductive-tests/ogb/examples/linkproppred/ppa/
+ogbl-ppa: /Inductive-tests/ogb/examples/linkproppred/ppa/
 
-ogbl-collab: /shortcuts-graph-machine-learning/Inductive-tests/ogb/examples/linkproppred/collab/
+ogbl-collab: /Inductive-tests/ogb/examples/linkproppred/collab/
+
+## Temporal Networks
+
+The open-source data can be downloaded from: http://snap.stanford.edu/data/soc-RedditHyperlinks.html
+
+The Python notebooks to reproduce the results are available at: /Temporal_Networks/*
