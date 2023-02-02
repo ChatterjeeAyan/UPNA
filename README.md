@@ -51,3 +51,15 @@ ogbl-collab: /Inductive-tests/ogb/examples/linkproppred/collab/
 The open-source data can be downloaded from: http://snap.stanford.edu/data/soc-RedditHyperlinks.html
 
 The Python notebooks to reproduce the results are available at: /Temporal_Networks/*
+
+# Topological Shortcuts in DGL
+
+We compare the performance of GraphSAGE \cite{graphsage} with the traditional configuration model and observe that the deep model leverages topological shortcuts. Both models achieve similar AUROC over multiple benchmark datasets in DGL \cite{dgl}. We use random edge split to create the train-validation-tests graphs. 
+
+| CitationGraphDataset - pubmed | 0.912 | 0.881 |
+| CoraDataset | 0.864 | 0.829 |
+| CoraFull  | 0.889 | 0.857 |
+| AmazonCoBuy - computers | 0.499 | 0.891 |
+| AmazonCoBuy - photo  | 0.5 | 0.897 |
+| Coauthor - cs  | 0.721 | 0.854 |
+| Coauthor - physics  | 0.861 | 0.851 |
