@@ -96,6 +96,8 @@ Inductive train-validation-test split using random edge split on the OGB benchma
 | ogbl-collab | 36,593 | 62,561 | 60,023 | 27,482 | 51,419 | 42,680 | 1,281,488 |
 | ogbl-ddi | 0 | 3,759 | 508 | 0 | 53,396 | 5 | 445,109 |
 
+# References 
+
 [1] William L. Hamilton, Rex Ying, and Jure Leskovec. 2017. Inductive Representation Learning on Large Graphs. https://arxiv.org/abs/1706.02216
 
 [2] Weihua Hu, Matthias Fey, Marinka Zitnik, Yuxiao Dong, Hongyu Ren, Bowen Liu, Michele Catasta, and Jure Leskovec. 2020. Open Graph Benchmark: Datasets for Machine Learning on Graphs. https://arxiv.org/abs/2005.00687
