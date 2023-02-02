@@ -52,9 +52,11 @@ The open-source data can be downloaded from: http://snap.stanford.edu/data/soc-R
 
 The Python notebooks to reproduce the results are available at: /Temporal_Networks/*
 
-# Topological Shortcuts in DGL
+# Supplementary Material
 
-We compare the performance of GraphSAGE \cite{graphsage} with the traditional configuration model and observe that the deep model leverages topological shortcuts. Both models achieve similar AUROC over multiple benchmark datasets in DGL \cite{dgl}. We use random edge split to create the train-validation-tests graphs. 
+## Topological Shortcuts in DGL
+
+We compare the performance of GraphSAGE [1] with the traditional configuration model and observe that the deep model leverages topological shortcuts. Both models achieve similar AUROC over multiple benchmark datasets in DGL. We use random edge split to create the train-validation-tests graphs. 
 
 
 Datasets are available at: https://docs.dgl.ai/en/0.4.x/api/python/data.html
@@ -68,4 +70,31 @@ Datasets are available at: https://docs.dgl.ai/en/0.4.x/api/python/data.html
 | AmazonCoBuy - photo  | 0.5 | 0.897 |
 | Coauthor - cs  | 0.721 | 0.854 |
 | Coauthor - physics  | 0.861 | 0.851 |
-| --- | --- | --- |
+
+## Benchmark Graph Datasets are insufficient for Inductive Tests
+
+Open Graph Benchmark (OGB) [2] provides a useful benchmark for comparing link prediction models, but is limited only to the transductive setting. OGB-provided train-validation-test splits are inadequate for inductive tests. OGB  provides large-scale graph datasets from various domains like social networks, biological networks, and molecular graphs. The train-validation-test splits are specifically tailored to test generalization based on specific properties associated with each graph. For example, in ogbl-ppa (protein-protein interaction network), the training graph consists of the interactions obtained via high throughput technology or even text-mining. This method of obtaining the interactions is cost-effective but produces low-confidence data. The validation and the test datasets are obtained from low throughput and resource-intensive experiments. Thus, they are of high confidence and provide a challenging generalization scenario.
+However, the large overlap between the nodes in the train, the validation, and the test graphs limits us from creating node-disjoint train and test datasets for an inductive test setting.
+Thus, running an inductive test using the default OGB train-validation-tests splits is unfeasible. 
+We summarize below the graph properties of the OGB link prediction datasets, which 
+shows the node overlaps between the train-validation-test splits in the OGB datasets. We lose the majority of the training edges when we remove the edges from the training graph which share nodes with the test dataset. The OGB data splits are thus insufficient for inductive tests. 
+The default train-validation-test splits in the OGB link prediction benchmark have overlapping nodes. Therefore, when we remove the edges from the training graph which share nodes with the test graph, we lose majority of the edges. 
+
+The benchmark train-validation-test graphs in OGB have overlapping nodes, which hinder the creation of inductive tests:
+
+| Dataset | Train Nodes | Validation Nodes | Test Nodes | Train - test Nodes | Test - Train Nodes |
+| --- | :---: | ---: |
+| ogbl-ppa | 576,289 | 276,199 | 576,071 | 0 | 0 |
+| ogbl-collab | 235,868 | 144,942 | 143,679 | 0 | 0 |
+| ogbl-ddi | 3,967 | 3,995 | 1,737 | 86 | 0 |
+
+Inductive train-validation-test split using random edge split on the OGB benchmark:
+
+| Dataset | Train Nodes | Validation Nodes | Test Nodes | Train Edges | Validation Edges | Test Edges | Edges lost |
+| --- | :---: | ---: |
+| ogbl-ppa | 3,991 | 36,778 | 461,288 | 2,626 | 25,973 | 1,213,051 | 29,084,623 |
+| ogbl-collab | 36,593 | 62,561 | 60,023 | 27,482 | 51,419 | 42,680 | 1,281,488 |
+| ogbl-ddi | 0 | 3,759 | 508 | 0 | 53,396 | 5 | 445,109 |
+
+[1] William L. Hamilton, Rex Ying, and Jure Leskovec. 2017. Inductive Representation Learning on Large Graphs. https://arxiv.org/abs/1706.02216
+[2] Weihua Hu, Matthias Fey, Marinka Zitnik, Yuxiao Dong, Hongyu Ren, Bowen Liu, Michele Catasta, and Jure Leskovec. 2020. Open Graph Benchmark: Datasets for Machine Learning on Graphs. https://arxiv.org/abs/2005.00687
