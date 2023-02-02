@@ -83,7 +83,7 @@ The default train-validation-test splits in the OGB link prediction benchmark ha
 The benchmark train-validation-test graphs in OGB have overlapping nodes, which hinder the creation of inductive tests:
 
 | Dataset | Train Nodes | Validation Nodes | Test Nodes | Train - Test Nodes | Test - Train Nodes |
-| --- | :---: | :---: | :---: | :---: | ---: |
+| :--- | :---: | :---: | :---: | :---: | :---: |
 | ogbl-ppa | 576,289 | 276,199 | 576,071 | 0 | 0 |
 | ogbl-collab | 235,868 | 144,942 | 143,679 | 0 | 0 |
 | ogbl-ddi | 3,967 | 3,995 | 1,737 | 86 | 0 |
@@ -91,7 +91,7 @@ The benchmark train-validation-test graphs in OGB have overlapping nodes, which 
 Inductive train-validation-test split using random edge split on the OGB benchmark:
 
 | Dataset | Train Nodes | Validation Nodes | Test Nodes | Train Edges | Validation Edges | Test Edges | Edges lost |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | ogbl-ppa | 3,991 | 36,778 | 461,288 | 2,626 | 25,973 | 1,213,051 | 29,084,623 |
 | ogbl-collab | 36,593 | 62,561 | 60,023 | 27,482 | 51,419 | 42,680 | 1,281,488 |
 | ogbl-ddi | 0 | 3,759 | 508 | 0 | 53,396 | 5 | 445,109 |
