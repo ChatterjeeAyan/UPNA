@@ -52,6 +52,8 @@ The open-source data can be downloaded from: http://snap.stanford.edu/data/soc-R
 
 The Python notebooks to reproduce the results are available at: /Temporal_Networks/*
 
+For the details and the original implementation of DyHATR, check out: https://github.com/skx300/DyHATR
+
 # Supplementary Material
 
 ## Topological Shortcuts in DGL
