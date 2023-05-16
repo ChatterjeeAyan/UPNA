@@ -78,7 +78,7 @@ Datasets are available at: https://docs.dgl.ai/en/0.4.x/api/python/data.html
 ## Description of the OGB MLP Architectures for Reproducibility
 
 | Dataset | Layers | Parameters | Hidden Channels | Dropout | Batch Size | Learning Rate | Epochs
-| --- | :---: | ---: |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
 | ogbl-ppa | 3 | 113,921 | 256 | 0.1 | 65,536 | 0.01 | 20 |
 | ogbl-collab | 3 | 99,073 | 256 | 0.1 | 65,536 | 0.01 | 200 |
 | ogbl-ddi | 3 | 99,073 | 256 | 0.1 | 65,536 | 0.01 | 100 |
