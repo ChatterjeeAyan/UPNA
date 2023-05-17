@@ -1,12 +1,8 @@
-# Disentangling Node Attributes from Graph Topology for Improved Generalizability in Link Prediction
+# UPNA (Unsupervised Pre-training of Node Attributes): Disentangling Node Attributes from Graph Topology for Improved Generalizability in Link Prediction
 
 # Abstract 
 
-Predicting whether two nodes u and v are connected in a graph (a.k.a. link prediction) is useful in many application domains, from friend recommendations in social networks to drug discovery in drug-target interaction networks. The most common setting in link prediction is the transductive scenario, where both nodes u and v are observed during training. When one or both nodes are not observed during training, the link prediction setting is referred to as semi-inductive and inductive, respectively.
-In the absence of topological information, link prediction models are forced to use node attributes to make accurate predictions for previously unobserved nodes. For example, recommending a new item to a user in the semi-inductive setting or identifying the interaction between a new protein target and a newly developed drug in the inductive setting requires meaningful pairwise learning of node attributes.
-In addition, the semi-inductive and inductive scenarios are of interest for predicting connections in temporal networks, where newly arrived nodes connect to temporal instances of the graph, and create a topology that evolves over time.
-
-We investigate the interplay between node attributes and graph topology from an information-theoretic standpoint and show how node attributes, which contain information beyond graph topology, improve the generalization power of link prediction models quantified in terms of inductive link prediction performance. UPNA (Unsupervised Pre-training of Node Attributes) on large corpora allows us to learn the latent mechanism of graph generation independent of the observed graph. By gaining insight into the graph growth mechanism via node attributes, we remove the observational bias associated with a fixed snapshot of the training graph and are able to make meaningful predictions about unobserved nodes while bypassing topological shortcuts. Pre-training of node attributes improves inductive link prediction performance by multiple folds compared to the state-of-the-art (between 3X to 34X on benchmark datasets). UPNA can be extended to any pairwise learning task, such as the cold-start problem in recommender systems and entity resolution. UPNA integrated with existing link prediction models, which leverage attribute information, can improve the generalizability of a wide class of state-of-the-art methods in link prediction.
+Link prediction is a crucial task in graph machine learning with diverse applications. We explore the interplay between node attributes and graph topology and demonstrate that incorporating pre-trained node attributes improves the generalization power of link prediction models. Our proposed method, UPNA (Unsupervised Pre-training of Node Attributes), enables us to learn the latent mechanism of graph generation independent of the observed graph. By leveraging pre-trained node attributes, we overcome observational bias and make meaningful predictions about unobserved nodes, surpassing state-of-the-art performance (3X to 34X improvement on benchmark datasets). UPNA can be applied to various pairwise learning tasks and integrated with existing link prediction models to enhance their generalizability and bolster graph generative models.
 
 # Reproducing the Results 
 
@@ -61,7 +57,6 @@ For the details and the original implementation of DyHATR, check out: https://gi
 ## Topological Shortcuts in DGL
 
 We compare the performance of GraphSAGE [1] with the traditional configuration model and observe that the deep model leverages topological shortcuts. Both models achieve similar AUROC over multiple benchmark datasets in DGL. We use random edge split to create the train-validation-tests graphs. 
-
 
 Datasets are available at: https://docs.dgl.ai/en/0.4.x/api/python/data.html
 
