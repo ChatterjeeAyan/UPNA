@@ -1,4 +1,4 @@
-# UPNA (Unsupervised Pre-training of Node Attributes): Disentangling Node Attributes from Graph Topology for Improved Generalizability in Link Prediction
+# UPNA (Unsupervised Pre-training of Node Attributes)
 
 # Abstract 
 
